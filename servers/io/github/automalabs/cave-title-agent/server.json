@@ -1,0 +1,199 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.automalabs/cave-title-agent",
+  "version": "1.0.0",
+  "description": "AI-powered real estate settlement with 5 specialized agents for property transactions.",
+  "author": "Automa Labs",
+  "license": "MIT",
+  "homepage": "https://cavetitle.xyz",
+  "documentation": "https://cavetitle.xyz/docs",
+  "contact": {
+    "email": "support@automalabs.xyz",
+    "url": "https://cavetitle.xyz"
+  },
+  "packages": [
+    {
+      "registryType": "http",
+      "identifier": "https://cavetitle.xyz",
+      "transport": {
+        "type": "streamable-http",
+        "url": "https://cavetitle.xyz/api/mcp"
+      }
+    }
+  ],
+  "tools": [
+    {
+      "name": "cave_discovery_agent",
+      "description": "Search for properties using AI-powered market analysis. Scans MLS, public records, and social signals to find properties matching criteria. Identifies off-market opportunities. Returns property listings with valuations powered by PARCL/Polymarket.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+            "description": "Location to search (city, state, zip, or full address)"
+          },
+          "propertyType": {
+            "type": "string",
+            "enum": ["residential", "commercial", "land", "multi-family"],
+            "description": "Type of property to search for"
+          },
+          "priceMin": {
+            "type": "number",
+            "description": "Minimum price in USD"
+          },
+          "priceMax": {
+            "type": "number",
+            "description": "Maximum price in USD"
+          },
+          "beds": {
+            "type": "number",
+            "description": "Minimum number of bedrooms"
+          },
+          "baths": {
+            "type": "number",
+            "description": "Minimum number of bathrooms"
+          }
+        },
+        "required": ["location"]
+      }
+    },
+    {
+      "name": "cave_title_agent",
+      "description": "Verify property titles and clear liens. Performs automated title search with 99.95% accuracy. Detects and resolves liens. Verifies ownership and legal description.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "description": "Full property address"
+          },
+          "county": {
+            "type": "string",
+            "description": "County name"
+          },
+          "state": {
+            "type": "string",
+            "description": "State abbreviation (e.g., CA, NY)"
+          },
+          "parcelNumber": {
+            "type": "string",
+            "description": "Optional parcel/lot number"
+          }
+        },
+        "required": ["address", "state"]
+      }
+    },
+    {
+      "name": "cave_settlement_agent",
+      "description": "Execute atomic property settlements in 15 seconds. Coordinates with attorney network. Records blockchain title transfer. Disburses funds via DeFi.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "buyerAddress": {
+            "type": "string",
+            "description": "Buyer's Ethereum/Polygon address"
+          },
+          "sellerAddress": {
+            "type": "string",
+            "description": "Seller's Ethereum/Polygon address"
+          },
+          "propertyAddress": {
+            "type": "string",
+            "description": "Full property address"
+          },
+          "purchasePrice": {
+            "type": "number",
+            "description": "Purchase price in USD"
+          },
+          "escrowAmount": {
+            "type": "number",
+            "description": "Escrow amount in USDC"
+          }
+        },
+        "required": ["buyerAddress", "sellerAddress", "propertyAddress", "purchasePrice"]
+      }
+    },
+    {
+      "name": "cave_negotiation_agent",
+      "description": "Automate deal negotiation and contingencies. Conducts autonomous price negotiation. Optimizes for owner preferences (speed, price, terms). Handles counteroffers.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "listPrice": {
+            "type": "number",
+            "description": "Current list price in USD"
+          },
+          "offerPrice": {
+            "type": "number",
+            "description": "Proposed offer price in USD"
+          },
+          "contingencies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of contingencies (inspection, appraisal, financing, etc.)"
+          },
+          "closingTimeline": {
+            "type": "string",
+            "description": "Desired closing timeline (e.g., '15 days', '30 days')"
+          },
+          "ownerPreferences": {
+            "type": "object",
+            "properties": {
+              "prioritizeSpeed": {
+                "type": "boolean",
+                "description": "Prioritize fast closing over price"
+              },
+              "prioritizePrice": {
+                "type": "boolean",
+                "description": "Prioritize highest price over speed"
+              },
+              "prioritizeTerms": {
+                "type": "boolean",
+                "description": "Prioritize favorable terms"
+              }
+            }
+          }
+        },
+        "required": ["listPrice", "offerPrice"]
+      }
+    },
+    {
+      "name": "cave_lender_agent",
+      "description": "Coordinate funding and escrow management. Originates loans automatically. Underwrites using AI (income, credit, property value). Funds instantly via DeFi liquidity pools.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "loanAmount": {
+            "type": "number",
+            "description": "Loan amount in USD"
+          },
+          "propertyValue": {
+            "type": "number",
+            "description": "Property valuation in USD"
+          },
+          "borrowerIncome": {
+            "type": "number",
+            "description": "Annual borrower income in USD"
+          },
+          "creditScore": {
+            "type": "number",
+            "description": "Borrower credit score (300-850)"
+          },
+          "loanTerm": {
+            "type": "number",
+            "description": "Loan term in years (e.g., 15, 30)"
+          },
+          "downPayment": {
+            "type": "number",
+            "description": "Down payment percentage (e.g., 20 for 20%)"
+          }
+        },
+        "required": ["loanAmount", "propertyValue", "borrowerIncome", "creditScore"]
+      }
+    }
+  ],
+  "resources": [],
+  "prompts": []
+}
