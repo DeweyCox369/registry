@@ -1,0 +1,105 @@
+{
+  "id": "aaos-cfo-agent-v1.1.0",
+  "name": "AAOS CFO Agent",
+  "version": "1.1.0",
+  "organization": "AAOS 2.0",
+  "organizationUrl": "https://aaos2.xyz",
+  "description": "Autonomous Chief Financial Officer for portfolio management, asset allocation, and yield optimization with privacy-preserving transactions via x402-PRIVATE",
+  "registryUrl": "mcp://aaos2.xyz/cfo-agent",
+  "status": "active",
+  "tier": "enterprise",
+  "capabilities": [
+    "portfolio_management",
+    "asset_allocation",
+    "yield_optimization",
+    "treasury_management",
+    "capital_allocation",
+    "financial_planning",
+    "confidential_transactions"
+  ],
+  "useCases": [
+    "Rebalance portfolio based on market conditions",
+    "Optimize asset allocation across DeFi protocols",
+    "Maximize yield while managing risk",
+    "Manage treasury reserves",
+    "Allocate capital to new opportunities",
+    "Generate financial forecasts",
+    "Execute confidential transactions via x402-PRIVATE"
+  ],
+  "pricing": {
+    "model": "hybrid_performance_based",
+    "baseFee": {
+      "rate": "0.5%",
+      "period": "annual",
+      "basis": "AUM"
+    },
+    "performanceFee": {
+      "rate": "15%",
+      "basis": "excess returns above benchmark"
+    },
+    "paymentOptions": {
+      "standard": {
+        "protocol": "x402",
+        "description": "Standard public transactions"
+      },
+      "private": {
+        "protocol": "x402-PRIVATE",
+        "description": "Confidential transactions with privacy premium",
+        "premium": "+0.1%"
+      }
+    },
+    "minimumFee": "$100/month",
+    "maximumFee": "2% AUM/year",
+    "currency": "USDC",
+    "settlementFrequency": "daily"
+  },
+  "privacyLayer": {
+    "protocol": "x402-PRIVATE",
+    "version": "1.0.0",
+    "encryption": "AES-256-GCM",
+    "proofs": "Zero-Knowledge Proofs",
+    "features": [
+      "Confidential portfolio holdings",
+      "Private yield optimization",
+      "Encrypted reporting",
+      "Privacy-preserving analytics"
+    ]
+  },
+  "paymentSettlement": {
+    "treasuryType": "AAOS Treasury Wallet",
+    "treasuryAddress": "0x[AAOS_TREASURY_ADDRESS]",
+    "settlementMethods": {
+      "standard": "x402",
+      "private": "x402-PRIVATE"
+    },
+    "settlementFrequency": "daily",
+    "feeDistribution": {
+      "aaosPlatform": "100%"
+    }
+  },
+  "performanceMetrics": {
+    "uptimeSla": "99.99%",
+    "responseTimeMs": "<100",
+    "decisionAccuracyPercent": ">95%",
+    "benchmark": "S&P 500 / DeFi Index"
+  },
+  "apiEndpoints": {
+    "portfolioAnalysis": "/api/cfo/portfolio/analyze",
+    "rebalance": "/api/cfo/portfolio/rebalance",
+    "yieldOptimization": "/api/cfo/yield/optimize",
+    "forecast": "/api/cfo/forecast",
+    "confidentialTransaction": "/api/cfo/transaction/confidential"
+  },
+  "security": {
+    "authentication": "OAuth 2.0 + API Key",
+    "encryption": "TLS 1.3",
+    "auditLogging": "enabled",
+    "compliance": "SOC 2 Type II"
+  },
+  "support": {
+    "documentation": "https://aaos2.xyz/docs/cfo-agent",
+    "apiReference": "https://aaos2.xyz/api/cfo-agent",
+    "supportEmail": "support@aaos2.xyz",
+    "responseTimeHours": 1
+  }
+}

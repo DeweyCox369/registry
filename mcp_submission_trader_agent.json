@@ -1,0 +1,111 @@
+{
+  "id": "aaos-trader-agent-v1.1.0",
+  "name": "AAOS Trader Agent",
+  "version": "1.1.0",
+  "organization": "AAOS 2.0",
+  "organizationUrl": "https://aaos2.xyz",
+  "description": "Autonomous trading agent for spot trading, arbitrage, and market making with MEV protection via x402-PRIVATE",
+  "registryUrl": "mcp://aaos2.xyz/trader-agent",
+  "status": "active",
+  "tier": "enterprise",
+  "capabilities": [
+    "spot_trading",
+    "arbitrage",
+    "market_making",
+    "automated_trading",
+    "high_frequency_trading",
+    "cross_chain_trading",
+    "confidential_trading"
+  ],
+  "useCases": [
+    "Execute spot trades across CEX/DEX",
+    "Identify and execute arbitrage opportunities",
+    "Provide liquidity through market making",
+    "Execute automated trading strategies",
+    "Cross-chain arbitrage (Polygon, Ethereum, etc)",
+    "Real-time market analysis and execution",
+    "Execute confidential trades with MEV protection"
+  ],
+  "pricing": {
+    "model": "hybrid_performance_based",
+    "tradingFee": {
+      "rate": "0.1-0.5%",
+      "basis": "per trade",
+      "scaling": "by trade complexity"
+    },
+    "performanceFee": {
+      "rate": "20%",
+      "basis": "trading profits"
+    },
+    "arbitrageFee": {
+      "rate": "50%",
+      "basis": "arbitrage spread captured"
+    },
+    "paymentOptions": {
+      "standard": {
+        "protocol": "x402",
+        "description": "Standard public transactions"
+      },
+      "private": {
+        "protocol": "x402-PRIVATE",
+        "description": "Confidential transactions with MEV protection and privacy premium",
+        "premium": "+0.2%",
+        "rationale": "higher value trades"
+      }
+    },
+    "minimumFee": "$500/month",
+    "currency": "USDC",
+    "settlementFrequency": "real-time"
+  },
+  "privacyLayer": {
+    "protocol": "x402-PRIVATE",
+    "version": "1.0.0",
+    "encryption": "AES-256-GCM",
+    "proofs": "Zero-Knowledge Proofs",
+    "mevProtection": true,
+    "features": [
+      "Confidential trading execution",
+      "MEV protection (front-running prevention)",
+      "Private arbitrage",
+      "Hidden order flow"
+    ]
+  },
+  "paymentSettlement": {
+    "treasuryType": "AAOS Treasury Wallet",
+    "treasuryAddress": "0x[AAOS_TREASURY_ADDRESS]",
+    "settlementMethods": {
+      "standard": "x402",
+      "private": "x402-PRIVATE"
+    },
+    "settlementFrequency": "real-time",
+    "feeDistribution": {
+      "aaosPlatform": "100%"
+    }
+  },
+  "performanceMetrics": {
+    "uptimeSla": "99.99%",
+    "executionSpeedSeconds": "<1",
+    "winRatePercent": ">55%",
+    "profitFactor": ">1.5",
+    "maxDrawdownPercent": "<10%"
+  },
+  "apiEndpoints": {
+    "marketAnalysis": "/api/trader/market/analyze",
+    "executeTrade": "/api/trader/trade/execute",
+    "arbitrageScan": "/api/trader/arbitrage/scan",
+    "portfolioRebalance": "/api/trader/portfolio/rebalance",
+    "confidentialTrade": "/api/trader/trade/confidential"
+  },
+  "security": {
+    "authentication": "OAuth 2.0 + API Key",
+    "encryption": "TLS 1.3",
+    "auditLogging": "enabled",
+    "compliance": "SOC 2 Type II"
+  },
+  "support": {
+    "documentation": "https://aaos2.xyz/docs/trader-agent",
+    "apiReference": "https://aaos2.xyz/api/trader-agent",
+    "supportEmail": "support@aaos2.xyz",
+    "responseTimeHours": 0.5
+  }
+}
